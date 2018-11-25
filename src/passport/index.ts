@@ -1,5 +1,6 @@
 import Passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
+import { Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt';
 import { compare } from 'bcryptjs';
 
 import UserModel, { IUser } from '../model/user';
@@ -54,4 +55,22 @@ function userLoginStrategy(email: string, password: string, done: Function) {
     .catch((e) => {
       done(e);
     })
+}
+
+Passport.use(new JWTStrategy(
+  {
+    secretOrKey: process.env.PRIVATE_KEY_JWT || 'sample',
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
+  },
+  jwtStrategy
+))
+
+function jwtStrategy(token: any, done: Function) {
+  console.log('token:');
+
+  try {
+    done(null, token.user);
+  } catch(e) {
+    done(e);
+  }
 }

@@ -13,8 +13,7 @@ export async function Login(req: Request, res: Response, next: NextFunction) {
   Passport.authenticate('login', async (err: Error, user: IUser, info) => {
     try {
       if (err || !user) {
-        // const error = new Error('An error occured.');
-        next(err);
+        next(err || 'user does not exist');
         return;
       }
   
