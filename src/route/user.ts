@@ -1,11 +1,15 @@
 import {
   Router
 } from 'express';
+import Passport from 'passport';
 
 import {
-  SignUp
-} from '../route-func/user/create';
+  SignUp,
+  Login
+} from '../route-func/user';
 
 export const router = Router();
 
-router.post('/signup', SignUp);
+router.post('/signup', Passport.authenticate('signup', {session: false}), SignUp);
+
+router.post('/login', Login);
