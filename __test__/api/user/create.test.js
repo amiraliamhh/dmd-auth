@@ -18,7 +18,6 @@ describe('creating user using api calls', () => {
   })
 
   test('user sign up: has property "success"', () => {
-    expect.assertions(2);
   
     const body = {
       email: 'sample@gmail.com',
@@ -33,7 +32,7 @@ describe('creating user using api calls', () => {
   });
 })
 
-function signup(body) {
+export function signup(body) {
   return axios.post(`${baseUrl}/api/v1.0/signup`, body)
 }
 
