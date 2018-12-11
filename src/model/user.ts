@@ -30,7 +30,9 @@ const UserSchema = new mongoose.Schema({
   },
   dashboards: [{
     name: String,
-    options: Schema.Types.Mixed,
+    options: {
+      type: mongoose.Schema.Types.Mixed
+    },
     widgets: [String]
   }],
   account_type: {
