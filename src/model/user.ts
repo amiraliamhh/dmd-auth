@@ -1,4 +1,4 @@
-import mongoose, { Document } from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 import { genSalt, hash } from 'bcryptjs';
 
 export interface IUser extends Document {
@@ -27,6 +27,19 @@ const UserSchema = new mongoose.Schema({
   },
   last_name: {
     type: String
+  },
+  dashboards: [{
+    name: String,
+    options: Schema.Types.Mixed,
+    widgets: [String]
+  }],
+  account_type: {
+    type: String,
+    enum: [
+      'free',
+      'premium'
+    ],
+    default: 'free'
   }
 });
 
