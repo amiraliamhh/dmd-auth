@@ -17,10 +17,10 @@ async function userSignupStartegy(email: string, password: string, done: Functio
 
   try {
     const user = await UserModel.create({email, password});
-    return done(null, user)
+    return done(null, {success: true, ...user})
 
   } catch(e) {
-    done(e);
+    done(null, {success: false, err_code: 11000, error: e});
   }
 }
 
@@ -42,12 +42,11 @@ function userLoginStrategy(email: string, password: string, done: Function) {
 
       compare(password, user.password)
       .then(isValid => {
-        console.log('isValid', isValid);
         if (!isValid) {
-          return done(null, false, { message: 'wrong password' });
-        }
+          return done(null, { success: false, err: 'wrong pass', errcode: 11001 }, { message: 'wrong password' });
+        } 
     
-        return done(null, user, { message: 'logged in successfully' });
+        return done(null, Object.assign(user, { success: true }), { message: 'logged in successfully' });
       })
       .catch(e => {
         return done(null, false, { message: 'An error occured' });

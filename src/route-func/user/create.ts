@@ -9,12 +9,21 @@ import { IResFormat } from '../utils';
 
 // method: post
 export function SignUp(req: Request, res: Response, next: NextFunction) {
+
+  console.log(req.user);
   
   const response: IResFormat = {
-    success: true
+    success: (req as any).user.success ? true : false,
+    err: (req as any).user.error,
+    errcode: (req as any).user.err_code
   };
+
+  if (response.success) {
+    res.json(response);
+  } else {
+    res.status(400).json(response);
+  }
   
-  res.json(response);
 }
 
 export function SinupPassport(req: Request, res: Response, next: NextFunction) {
