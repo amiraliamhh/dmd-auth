@@ -28,13 +28,6 @@ const UserSchema = new mongoose.Schema({
   last_name: {
     type: String
   },
-  dashboards: [{
-    name: String,
-    options: {
-      type: mongoose.Schema.Types.Mixed
-    },
-    widgets: [String]
-  }],
   account_type: {
     type: String,
     enum: [

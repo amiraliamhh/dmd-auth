@@ -42,18 +42,19 @@ function userLoginStrategy(email: string, password: string, done: Function) {
 
       compare(password, user.password)
       .then(isValid => {
+        console.log('isValid', isValid);
         if (!isValid) {
-          done(null, false, { message: 'wrong password' });
+          return done(null, false, { message: 'wrong password' });
         }
     
-        done(null, user, { message: 'logged in successfully' });
+        return done(null, user, { message: 'logged in successfully' });
       })
       .catch(e => {
-        done(null, false, { message: 'An error occured' });
+        return done(null, false, { message: 'An error occured' });
       })
     })
     .catch((e) => {
-      done(e);
+      return done(e);
     })
 }
 
