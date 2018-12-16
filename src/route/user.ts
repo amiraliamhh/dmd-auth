@@ -18,6 +18,5 @@ router.post('/login', Login);
 router.put('/user/update', Passport.authenticate('jwt', { session: false }), UpdateUser);
 
 router.get('/secure', Passport.authenticate('jwt', { session: false }), (req, res) => {
-  console.log(req.user)
   res.json({success: true});
 })

@@ -9,8 +9,6 @@ import { IResFormat } from '../utils';
 
 // method: post
 export function SignUp(req: Request, res: Response, next: NextFunction) {
-
-  console.log(req.user);
   
   const response: IResFormat = {
     success: (req as any).user.success ? true : false,

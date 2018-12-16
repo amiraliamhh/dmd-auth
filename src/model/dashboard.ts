@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const DashboardSchema = new mongoose.Schema({
-  owener: {
+  owner: {
     type: String,
     required: true
   },

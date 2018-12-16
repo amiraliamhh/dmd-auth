@@ -3,4 +3,5 @@ export interface IResFormat {
   err?: string;
   errcode?: number;
   token?: string;
+  [key: string]: any;
 }

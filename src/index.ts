@@ -5,6 +5,8 @@ import cors from 'cors';
 import '@babel/polyfill';
 
 import { router as UserRouter } from './route/user';
+import { router as DashboardRouter } from './route/dashboard';
+import { router as WidgetRouter } from './route/widget';
 
 require('./passport/index')
 
@@ -20,7 +22,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/auth', { useNewUrlParser: true },(er
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
-app.use('/api/v1.0/', UserRouter);
+app.use('/api/v1.0/dashboard/', DashboardRouter)
+app.use('/api/v1.0/widget/', WidgetRouter)
+app.use('/api/v1.0/', UserRouter)
 
 app.listen(process.env.PORT || 4000, (err: Error) => {
   if (err) {

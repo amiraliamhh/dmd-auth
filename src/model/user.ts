@@ -6,6 +6,7 @@ export interface IUser extends Document {
   password?: string;
   first_name?: string;
   last_name?: string;
+  account_type?: 'free'|'premium';
 }
 
 const UserSchema = new mongoose.Schema({

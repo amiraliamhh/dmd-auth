@@ -66,8 +66,6 @@ Passport.use(new JWTStrategy(
 ))
 
 function jwtStrategy(token: any, done: Function) {
-  console.log('token:');
-
   try {
     done(null, token.user);
   } catch(e) {
