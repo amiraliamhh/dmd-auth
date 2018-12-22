@@ -9,7 +9,7 @@ const WidgetSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  name: {
+  title: {
     type: String,
     required: true
   },
@@ -19,6 +19,14 @@ const WidgetSchema = new mongoose.Schema({
     enum: [
       'alexa_watcher'
     ]
+  },
+  layoutConfig: {
+    type: mongoose.Schema.Types.Mixed,
+    default: {}
+  },
+  reportConfig: {
+    type: mongoose.Schema.Types.Mixed,
+    default: {}
   },
   widget_data: {
     type: mongoose.Schema.Types.Mixed,

@@ -5,7 +5,7 @@ const DashboardSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  name: {
+  title: {
     type: String,
     required: true
   },
@@ -14,6 +14,18 @@ const DashboardSchema = new mongoose.Schema({
     default: []
   },
   configs: {
+    type: mongoose.Schema.Types.Mixed,
+    default: {}
+  },
+  visibility: {
+    type: String,
+    enum: [
+      'public',
+      'private'
+    ],
+    default: 'private'
+  },
+  theme: {
     type: mongoose.Schema.Types.Mixed,
     default: {}
   }
