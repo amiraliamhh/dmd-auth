@@ -7,7 +7,7 @@ const DashboardSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    required: true
+    required: false
   },
   widgets: {
     type: [String],
