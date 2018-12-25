@@ -10,8 +10,7 @@ const WidgetSchema = new mongoose.Schema({
     required: true
   },
   title: {
-    type: String,
-    required: true
+    type: String
   },
   widget_type: {
     type: String,
